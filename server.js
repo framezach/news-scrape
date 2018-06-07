@@ -15,10 +15,6 @@ app.use(express.static("public"))
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// require("./controllers/webScrapperController.js")(app)
-
-// Set mongoose to leverage built in JavaScript ES6 Promises
-// Connect to the Mongo DB
 app.listen(PORT, ()=>{
     console.log(`App listening on PORT ${PORT}`);
 })

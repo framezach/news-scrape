@@ -16,5 +16,13 @@
   "bugs": {
     "url": "https://github.com/framezach/news-scrape/issues"
   },
-  "homepage": "https://github.com/framezach/news-scrape#readme"
+  "homepage": "https://github.com/framezach/news-scrape#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cheerio": "^1.0.0-rc.2",
+    "express": "^4.16.3",
+    "express-handlebars": "^3.0.0",
+    "mongoose": "^5.1.4",
+    "request": "^2.87.0"
+  }
 }
