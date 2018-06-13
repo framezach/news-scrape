@@ -1,18 +1,14 @@
 $(document).ready(function() {
-    /////////////////////////////////////////////// /* Initialize Modals */ ////////////////////////////////////////////////////////
     $('#saveModal').modal(); // Articles Saved Modal
     $('#modalMessage').modal(); // Message Modal
     $('#articleModal').modal(); // Notes Modal
   
-    /////////////////////////////////////////////// /* Event Listeners */ ////////////////////////////////////////////////////////
     $('.searchArticle').on("click", () => { // Scrap Articles Request
-      // console.log("searchArticle Button clicked");
       fetch("/api/search", {method: "GET"}).then(() => window.location.replace("/api/search"));
-    }); // End searchArticle btn Click
+    }); 
   
     $('.addArticle').on("click", function(element) { // Save an Article Request
   
-      // console.log("Add Button clicked");
   
       let title = $(this).attr("data-headline");
       let tagline = $(this).attr("data-summary");
@@ -41,9 +37,9 @@ $(document).ready(function() {
         $(document.getElementById(url)).css('display', 'none');
       });
   
-    }); // End addArticle Btn click
+    }); 
   
-    $('.savedArticles').on("click", () => { // Query for Saved Articles
+    $('.savedArticles').on("click", () => { 
       console.log("Saved Button clicked");
       $(".collection").html("");
       $("#textarea1").val("");
