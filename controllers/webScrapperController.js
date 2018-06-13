@@ -38,21 +38,17 @@ router.post("/scrape", function(req, res) {
 
   // First, we grab the body of the html with request
   request("https://reddit.com/r/news", function(error, response, html) {
-    // Then, we load that into cheerio and save it to $ for a shorthand selector
     let $ = cheerio.load(html);
 
-    // Make emptry array for temporarily saving and showing scraped Articles.
     let scrapedArticles = {};
-    // Now, we grab every h2 within an article tag, and do the following:
     $("article").each(function(i, element) {
 
       // Save an empty result object
       let result = {};
 
       // Add the text and href of every link, and save them as properties of the result object
-      result.title = $(this).children(".top-matter").children('.title').children('a').text();
-      result.tagline = $(this).children('.top-matter').children('.tagline').children('time').text()
-      result.link = $(this).children(".top-matter").children('.title').children('a').attr('href');
+      result.title = $(this).children(".bottom").children('.top-matter').children('.title').children('a').text();
+      result.link = $(this).children(".data-url").children('a').attr('rel');
 
       scrapedArticles[i] = result;
 
@@ -72,7 +68,6 @@ router.post("/save", function(req, res) {
   let newArticleObject = {};
 
   newArticleObject.title = req.body.title;
-  newArticleObject.tagline = req.body.tagline;
   newArticleObject.link = req.body.link;
 
   let entry = new Article(newArticleObject);
